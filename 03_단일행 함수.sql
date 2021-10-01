@@ -44,11 +44,13 @@ SELECT last_name, SUBSTR(last_name, -2, 2)
 FROM employees;
 
 -- 예제 5 (다시해봐)
-SELECT employee_id, CONCAT(first_name, LAST_NAME) 전체이름,
-                    last_name,
-                    LENGTH('last_name') 길이,
-                    INSTR('last_name','a') "'a'가 몇번째?"
+SELECT employee_id 사원번호,
+    concat(first_name, last_name) 전체이름,
+    last_name,
+    LENGTH(last_name) 길이,
+    INSTR(last_name, 'a') "'a'가 몇번째?"
 FROM employees;
+
 
 -- TRANSLATE : 문자열 바꾸기
 SELECT job_id, replace(job_id, 'ACCOUNT', 'ACCNT') 적용결과
@@ -73,6 +75,10 @@ SELECT employee_id 짝수번째, last_name
 FROM EMPLOYEES
 WHERE MOD(employee_id, 2)=0 -- 짝수
 ORDER BY employee_id;
+
+
+
+
 
 
 
