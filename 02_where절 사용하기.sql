@@ -146,13 +146,13 @@ ORDER BY employee_id DESC;
 -- 예제 2
 SELECT *
 FROM employees
-WHERE job_id LIKE '%CLERK' ORDER BY salary ASC;
+WHERE job_id LIKE '%CLERK%' ORDER BY salary DESC;
 
 -- 예제 3
-SELECT *
+SELECT employee_id 직원번호, last_name 이름, department_id 부서번호, salary 월급
 FROM employees
 WHERE employee_id BETWEEN 120 AND 150 
-ORDER BY department_id, salary ASC;
+ORDER BY 부서번호 DESC, 월급 DESC;
 
 
 
