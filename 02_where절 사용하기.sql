@@ -1,6 +1,5 @@
 -- where 절
-SELECT
-    *
+SELECT *
 FROM EMPLOYEES
 WHERE salary > 14000; -- 월급이 14000보다 많은 직원
 
@@ -13,14 +12,12 @@ FROM EMPLOYEES
 WHERE HIRE_DATE < '2002/06/10'; -- 날짜를 비교, 고용일이 2002년 6월 10일 이전에 고용됐던 직원 (날짜 사이는 '/'로 구분)
 
 -- 예제 1
-SELECT
-    *
+SELECT *
 FROM EMPLOYEES
 WHERE EMPLOYEE_ID = '100';
 
 -- 예제 2
-SELECT
-    *
+SELECT *
 FROM EMPLOYEES
 WHERE FIRST_NAME = 'David';
 
@@ -68,26 +65,49 @@ FROM employees
 WHERE salary IN ( 4000, 3000, 2700 );
 
 -- 예제 1
-SELECT * FROM employees WHERE salary IN ( 10000, 17000, 24000 );
+SELECT * 
+FROM employees 
+WHERE salary IN ( 10000, 17000, 24000 );
+
 -- 예제 2
-SELECT * FROM employees WHERE department_id NOT IN ( 30,50,80,100,110 );
+SELECT * 
+FROM employees 
+WHERE department_id NOT IN ( 30,50,80,100,110 );
 
 
 -- between 사이값
-SELECT * FROM employees WHERE salary BETWEEN 9000 AND 10000;
+SELECT * 
+FROM employees 
+WHERE salary BETWEEN 9000 AND 10000;
 
 -- 예제 1
-SELECT * FROM employees WHERE salary BETWEEN 10000 AND 20000;
+SELECT * 
+FROM employees 
+WHERE salary BETWEEN 10000 AND 20000;
+
 -- 예제 2
-SELECT * FROM employees WHERE hire_date BETWEEN '2004/01/01' AND '2004/12/30';
+SELECT * 
+FROM employees 
+WHERE hire_date BETWEEN '2004/01/01' AND '2004/12/30';
+
 -- 예제 3
-SELECT * FROM employees WHERE salary NOT BETWEEN 7000 AND 17000;
+SELECT * 
+FROM employees 
+WHERE salary NOT BETWEEN 7000 AND 17000;
 
 
 -- LIKE 연산자 _ %를 같이 사용해서 문자열을 검색
-SELECT * FROM employees WHERE last_name LIKE 'B%'; -- 대문자B로 시작 뒤에는 상관없음
-SELECT * FROM employees WHERE last_name LIKE '%b%'; --  문자열의 중간이 b가 있으면 전부 출력 
-SELECT * FROM employees WHERE last_name LIKE '____y'; -- 언더바(_) 정확한 자릿수를 표현
+SELECT * 
+FROM employees 
+WHERE last_name LIKE 'B%'; -- 대문자B로 시작 뒤에는 상관없음
+
+SELECT * 
+FROM employees 
+WHERE last_name LIKE '%b%'; --  문자열의 중간이 b가 있으면 전부 출력 
+
+SELECT * 
+FROM employees 
+WHERE last_name LIKE '____y'; -- 언더바(_) 정확한 자릿수를 표현
 
 -- 예제
 SELECT * FROM employees WHERE job_id LIKE '%AD%';
@@ -100,27 +120,29 @@ SELECT * FROM employees WHERE job_id LIKE '%MGR%' OR job_id LIKE '%ASST%';
 -- 널(NULL) 이란?
 -- 입력되지 않은 사용할수 없는 값이고 0 또는 공백('')이 아니다.
 -- 널값을 검색하기 위해 is NULL 
-SELECT commission_pct FROM employees;
+SELECT commission_pct 
+FROM employees;
 
-SELECT * FROM employees WHERE commission_pct is NULL;
+SELECT * 
+FROM employees 
+WHERE commission_pct is NULL;
 
 -- 널값이 아닐 경우면 찾을때 is NOT NULL
-SELECT * FROM employees WHERE commission_pct is NOT NULL;
+SELECT * 
+FROM employees 
+WHERE commission_pct is NOT NULL;
 
 
 -- [ORDER BY] 연산자 : 열 + ASC(오름차순) or DESC(내림차순) 열 정렬
-SELECT
-    *
+SELECT *
 FROM employees
 ORDER BY employee_id DESC;
 
-SELECT
-    *
+SELECT *
 FROM employees
 ORDER BY employee_id ASC; 
 
-SELECT
-    *
+SELECT *
 FROM employees
 ORDER BY employee_id; -- ASC는 기본 설정되어 있어서 생략 가능
 
