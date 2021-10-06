@@ -120,23 +120,52 @@ FROM employees
 WHERE job_id LIKE '%MGR%'
 OR job_id LIKE '%ASST%'; 
 
+SELECT *
+FROM employees
+WHERE commission_pct IS NULL;
 
+SELECT *
+FROM employees
+WHERE commission_pct IS NOT NULL;
 
+SELECT manager_id, first_name, last_name, salary, department_id
+FROM employees
+WHERE manager_id is null;
 
+SELECT last_name
+FROM employees
+ORDER BY last_name ASC; -- 내림차순(정방향)
 
+SELECT last_name
+FROM employees
+ORDER BY last_name DESC; -- 오름차순(역방향)
 
+SELECT department_id, employee_id, first_name, last_name
+FROM employees
+ORDER BY department_id, employee_id;
+-- 부서번호로 정렬 후 사원번호로 정렬
 
+SELECT department_id, last_name, salary*12 연봉
+FROM employees
+ORDER BY 연봉;
 
+SELECT department_id, last_name, salary*12 연봉
+FROM employees
+ORDER BY 2 DESC;
 
+SELECT employee_id, first_name, last_name
+FROM employees
+ORDER BY employee_id ASC;
 
+SELECT *
+FROM employees
+WHERE job_id LIKE '%CLERK%'
+ORDER BY salary DESC;
 
-
-
-
-
-
-
-
+SELECT *
+FROM employees
+WHERE employee_id BETWEEN 120 AND 150
+ORDER BY  department_id DESC, salary DESC;
 
 
 
