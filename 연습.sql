@@ -56,23 +56,69 @@ SELECT
     *
 FROM employees
 WHERE hire_date > '08/04/04'
-OR salary > 13000
-AND job_id='AD_VP'
+OR (salary > 13000
+AND job_id='AD_VP');
 
+SELECT *
+FROM employees
+WHERE NOT( hire_date > '04/01/01' OR salary > 5000);
 
+SELECT job_id, salary, first_name, last_name
+FROM employees
+WHERE salary > 4000
+AND job_id = 'IT_PROG';
 
+SELECT salary, job_id, first_name, last_name
+FROM employees
+WHERE salary > 4000
+AND (job_id = 'IT_PROG'
+OR job_id = 'FI_ACCOUNT');
 
+SELECT *
+FROM employees
+WHERE salary IN (10000,17000,24000);
 
+SELECT *
+FROM employees
+WHERE department_id NOT IN ( 30, 50, 80, 100, 110 );
 
+SELECT *
+FROM employees
+WHERE salary BETWEEN 10000 AND 20000;
 
+SELECT *
+FROM employees
+WHERE hire_date BETWEEN '04/01/01' AND '04/12/30';
 
+SELECT *
+FROM employees
+WHERE salary NOT BETWEEN 7000 AND 17000;
 
+SELECT *
+FROM employees
+WHERE last_name LIKE 'B%';
 
+SELECT job_id
+FROM employees
+WHERE job_id LIKE '%AD%';
 
+SELECT *
+FROM employees
+WHERE job_id LIKE '%AD___';
 
+SELECT *
+FROM employees
+WHERE phone_number LIKE '%1234';
 
+SELECT *
+FROM employees
+WHERE phone_number NOT LIKE '%3%'
+AND phone_number LIKE '%9';
 
-
+SELECT *
+FROM employees
+WHERE job_id LIKE '%MGR%'
+OR job_id LIKE '%ASST%'; 
 
 
 

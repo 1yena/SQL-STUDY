@@ -77,7 +77,7 @@ ORDER BY 월급합계 DESC;
 -- 예제 2
 SELECT department_id 부서번호, ROUND(AVG(salary)) 평균급여
 FROM employees
-WHERE department_id <> 40
+WHERE department_id != 40
 GROUP BY department_id
 HAVING ROUND(AVG(salary)) <= 7000;
 
@@ -88,6 +88,7 @@ WHERE job_id NOT LIKE '%REP%'
 GROUP BY job_id
 HAVING SUM(salary) >= 13000
 ORDER BY 급여총액 DESC;
+
 
 
 

@@ -47,17 +47,22 @@ WHERE DEPARTMENT_ID = 60
 SELECT *
 FROM employees
 WHERE NOT( hire_date > '2004/01/01' OR salary > 5000 );
---  hire_date <= '2004/01/01' AND salary <= 5000   
+--  hire_date <= '2004/01/01' AND salary <= 5000   의 값과 같음
+SELECT *
+FROM employees
+WHERE hire_date <= '2004/01/01' AND salary <= 5000;
 
 -- 예제 1
 SELECT *
 FROM employees 
-WHERE salary > 4000 AND job_id = 'IT_PROG';
+WHERE salary > 4000 
+AND job_id = 'IT_PROG';
 
 -- 예제 2
 SELECT *
 FROM employees 
-WHERE salary > 4000 AND (job_id = 'IT_PROG' OR job_id = 'FI_ACCOUNT');
+WHERE salary > 4000 
+AND (job_id = 'IT_PROG' OR job_id = 'FI_ACCOUNT');
 
 -- IN 연산자 : ()안의 값과 같을때 OR로 연결
 SELECT * 
