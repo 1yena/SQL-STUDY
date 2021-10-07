@@ -56,18 +56,43 @@ ORDER BY e.employee_id ASC;
 
 
 
+-- 외부 조인(Outer Join)
+SELECT e.last_name 직업명, d.department_id 부서번호, d.department_name 부서명
+FROM employees e
+JOIN departments d
+    on e.department_id = d.department_id;
+-- 기본 조인 -> null 값은 출력이 안 됨. but 외부조인은 널값도 출력 가능.
+SELECT *
+FROM employees
+WHERE department_id is null; -- 부서번호가 null값인 직원.
+
+-- left 외부 조인 (employees 테이블) > [join]을 기준으로 왼쪽.
+SELECT e.last_name 직업명, d.department_id 부서번호, d.department_name 부서명
+FROM employees e LEFT OUTER JOIN departments d
+    on e.department_id = d.department_id; -- 직원 테이블 중에 부서가 없는 직원(null)이 출력됨.
+
+-- right 외부 조인 (department 테이블) > [join]을 기준으로 오른쪽.
+SELECT e.last_name 직업명, d.department_id 부서번호, d.department_name 부서명
+FROM employees e RIGHT OUTER JOIN departments d
+    on e.department_id = d.department_id; -- 부서 테이블에 있지만 직원 테이블에서 사용하지 않는 부서(null)도 출력됨.
+
+-- full 외부 조인 : 조건에 맞지 않는 모든 데이터도 출력. (join 기준 왼쪽, 오른쪽 모두 포함)
+SELECT e.last_name 직업명, d.department_id 부서번호, d.department_name 부서명
+FROM employees e full OUTER JOIN departments d
+    on e.department_id = d.department_id;
+
+-- 예제 1
+SELECT c.country_name 국가, c.country_id 국가번호, l.location_id 지역번호, l.city 도시
+FROM countries c 
+LEFT OUTER JOIN locations l
+    on c.country_id = l.country_id
+ORDER BY 지역번호 DESC;
 
 
-
-
-
-
-
-
-
-
-
-
+-- 교차 조인(Cross Join)
+SELECT c.country_name 국가, r.region_name
+FROM countries c
+CROSS JOIN regions r;
 
 
 

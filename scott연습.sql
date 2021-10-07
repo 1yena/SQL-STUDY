@@ -227,18 +227,60 @@ WHERE sal BETWEEN 1500 AND 3000;
 
 -- SCOTT 연습문제 35~40번
 -- 문제 36
-SELECT ename, empno
-FROM emp
-GROUP BY deptno
+SELECT d.dname, COUNT(e.empno)
+FROM emp e
+JOIN dept d
+    on e.deptno = d.deptno
+GROUP BY d.dname
+HAVING COUNT(e.empno) > 5;
+-- [e.empno]를 '*'로 처리해도 됨.
+SELECT d.dname, COUNT(*)
+FROM emp e
+JOIN dept d
+    on e.deptno = d.deptno
+GROUP BY d.dname
 HAVING COUNT(*) > 5;
 
+-- 문제 37
+SELECT job, SUM(sal) 급여합계
+FROM emp
+GROUP BY job
+HAVING SUM(sal) > 5000
+AND job <> 'SALESMAN'; -- 그룹을 나눈 후 제외됨.(데이터가 방대할 경우 렉 걸림.)
+-- 정답!
+SELECT job, SUM(sal) 급여합계
+FROM emp
+WHERE job <> 'SALESMAN' -- where절에 적게 되면 그룹을 나누기 전에 제외됨.(데이터가 방대할 때 추천.)
+GROUP BY job
+HAVING SUM(sal) > 5000;
 
+-- 문제 38
+SELECT e.empno, e.ename, e.sal, s.grade
+FROM emp e
+JOIN salgrade s
+    on e.sal BETWEEN s.losal and s.hisal;
 
+-- 문제 39
+SELECT deptno, COUNT(*) 사원수, COUNT(comm) 커미션사원
+FROM emp
+GROUP BY deptno;
 
-
-
-
-
+-- 문제 40
+SELECT empno 사원번호, deptno 부서번호, 
+        decode(deptno, 10, '총무부',
+                       20, '개발부',
+                       30, '영업부'
+                ) 부서명
+FROM emp
+ORDER BY 부서번호;
+-- [case]절 사용할 경우
+SELECT empno 사원번호, deptno 부서번호, CASE deptno
+        WHEN 10 THEN '총무부'
+        WHEN 20 THEN '개발부'
+        WHEN 30 THEN '영업부'
+end "부서명"
+FROM emp
+ORDER BY 부서번호;
 
 
 
