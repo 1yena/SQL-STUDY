@@ -101,26 +101,70 @@ ORDER BY salary DESC;
 
 
 
+-- 집합연산자
+-- Union 합집합 : 중복되는 부분은 제거하고 출력.
+SELECT employee_id 직원번호, job_id 직종
+FROM employees
+UNION
+SELECT employee_id, job_id
+FROM job_history;
+-- 결과 줄 수 = 115줄
 
 
+-- Union All 합집합 : 두 개의 셀렉트문의 결과를 합친다.
+SELECT employee_id 직원번호, job_id 직종
+FROM employees
+UNION ALL
+SELECT employee_id, job_id
+FROM job_history;
+-- 결과 줄 수 = 117줄 -> 2줄이 중복됨.
 
 
+-- INTERSECT 교집합
+SELECT employee_id 직원번호, job_id 직종
+FROM employees
+INTERSECT
+SELECT employee_id, job_id
+FROM job_history;
+-- 결과 줄 수 = 2줄 -> 2줄이 중복됨.
 
 
+-- MINUS 차집합 (A-B)
+SELECT employee_id 직원번호, job_id 직종
+FROM employees
+MINUS
+SELECT employee_id, job_id
+FROM job_history;
+-- 결과 줄 수 = 105줄 -> 107줄 - 2줄
 
 
+-- 예제 1
+SELECT department_id
+FROM employees
+UNION
+SELECT department_id
+FROM departments;
 
+-- 예제 2
+SELECT department_id
+FROM employees
+UNION ALL
+SELECT department_id
+FROM departments;
 
+-- 예제 3
+SELECT department_id
+FROM employees
+INTERSECT
+SELECT department_id
+FROM departments;
 
-
-
-
-
-
-
-
-
-
+-- 예제 4
+SELECT department_id
+FROM departments
+MINUS
+SELECT department_id
+FROM employees;
 
 
 

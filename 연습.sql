@@ -167,6 +167,81 @@ FROM employees
 WHERE employee_id BETWEEN 120 AND 150
 ORDER BY  department_id DESC, salary DESC;
 
+SELECT last_name 이름, job_id, salary,
+    DECODE(job_id, 'IT_PROG', salary * 1.10,
+                   'ST_CLERK', salary * 1.15,
+                   'ST_CLERK', salary * 1.20,
+                              SALARY) "수정월급"
+FROM employees;
+
+SELECT last_name 이름, job_id, salary,
+    CASE WHEN SALARY < 5000 THEN 'LOW'
+         WHEN SALARY < 10000 THEN 'MEDIUM'
+         WHEN SALARY < 20000 THEN 'GOOD'
+         ELSE                     'EXCELLENT'
+    END "급여 수준"
+FROM employees;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
