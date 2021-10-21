@@ -31,7 +31,7 @@ VALUES ('자바', 7 );
 -- 기존에 만들어져 있는 테이블을 복사하는 방법***
 CREATE TABLE EMP_TEMP
 AS
-SELECT * FROM employees WHERE 1 <> 1;
+SELECT * FROM employees WHERE 1 <> 1; -- where절에 무조건 false가 되는 조건절을 넣어주면 됨.
 -- [employees] 테이블의 열구조만 복사
 
 -- 확인 --------------------------------

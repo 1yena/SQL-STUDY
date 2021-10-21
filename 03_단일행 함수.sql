@@ -15,7 +15,7 @@ FROM DUAL;
 SELECT SUBSTR('ABCDEFG',3,4), LENGTH('ABCDEFG')
 FROM DUAL;
 
-SELECT SUBSTR('ABCDEFG',3,4), LENGTH('ABCDEFG'), INSTR('ABSDEFG','G')
+SELECT SUBSTR('ABCDEFG',3,4), LENGTH('ABCDEFG'), INSTR('ABCDEFG','C')
 FROM DUAL;
 
 SELECT TRIM('   헬로   '), '   헬로   ' FROM DUAL; -- TRIM은 공백 제거.
@@ -53,7 +53,7 @@ FROM employees;
 
 
 -- TRANSLATE : 문자열 바꾸기
-SELECT job_id, replace(job_id, 'ACCOUNT', 'ACCNT') 적용결과
+SELECT job_id, replace(job_id, 'ACCOUNT', '낼름') 적용결과
 FROM employees;
 
 -- 예제 1
@@ -73,8 +73,17 @@ FROM DUAL;
 
 SELECT employee_id as 짝수번째, last_name as 성
 FROM EMPLOYEES
-WHERE MOD(employee_id, 2)=0 -- 짝수
+WHERE MOD(employee_id, 2) = 0 -- 짝수
 ORDER BY employee_id;
+
+SELECT employee_id as 홀수번째, last_name as 성
+FROM EMPLOYEES
+WHERE MOD(employee_id, 2) = 1 -- 홀수
+ORDER BY employee_id;
+
+-- 예제 1
+SELECT salary, ROUND(salary/30, 0) 정수, ROUND(salary/30, 1) 소수1, ROUND(salary/30, -1) 열자리
+FROM employees;
 
 
 
@@ -92,7 +101,7 @@ FROM dual;
 -- round(sysdate, 'YY') : 월을 연도로 반올림.
 
 
-SELECT sysdate 오늘날짜, sysdate+1 내일, sysdate-1 어제
+SELECT sysdate-2 그저께, sysdate-1 어제, sysdate 오늘, sysdate+1 내일, sysdate+2 모레
 FROM dual;
 -- 날짜에 더하기 빼기를 하면 실제 날짜가 더하거나 빼진다.
 
@@ -159,7 +168,7 @@ FROM employees
 WHERE last_name='King';
 
 -- 예제 1
-SELECT last_name 이름, salary 월급, salary*12 연봉, NVL(commission_pct, 0) 커미션, salary*12+salary*12*NVL(commission_pct, 0) "연봉+"
+SELECT last_name 이름, salary 월급, salary*12 연봉, NVL(commission_pct, 0) 커미션, (salary*12)+(salary*12*NVL(commission_pct, 0)) "연봉+커미션"
 FROM employees
 ORDER BY salary DESC;
 
@@ -203,46 +212,10 @@ FROM employees;
 SELECT employee_id, first_name, last_name, salary,
        CASE WHEN SALARY>=9000 THEN '상위급여'
             WHEN SALARY>=6000 THEN '중위급여'
-            ELSE             '하위급여'
+            ELSE                   '하위급여'
        END "급여 등급"
 FROM employees
 WHERE job_id='IT_PROG';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

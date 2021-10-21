@@ -34,7 +34,7 @@ WHERE START_DATE >= '2006/03/03';
 -- 예제 5
 SELECT *
 FROM DEPARTMENTS
-WHERE LOCATION_ID != 1700; --같지않다는 ' != ' 또는 ' <> '로 표시함.
+WHERE LOCATION_ID != 1700;  --같지않다는 ' != ' 또는 ' <> '로 표시함.
 
 
 -- 논리 연산자 AND OR NOT
