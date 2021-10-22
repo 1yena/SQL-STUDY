@@ -4,7 +4,7 @@ FROM employees
 WHERE hire_date > ( SELECT hire_date FROM employees WHERE last_name = 'Popp' );
 -- Popp 직원의 고용일보다 최근(이후)에 고용된 사람.
 -- SELECT hire_date FROM employees WHERE last_name = 'Popp' : Popp 직원의 고용일.
-/* 주의점 : 단일행 서브쿼리를 사용할 때는 해당 서브쿼리의 결과가 비교하는 데이터와 같도 하나만 출력되어야 함.
+/* 주의점 : 단일행 서브쿼리를 사용할 때는 해당 서브쿼리의 결과가 하나만 출력되어야 함.
    결과는 하나만 나와야 함 -> 결과나 비교 대상이 두 개 이상 나오면 에러남.*/
 
 -- 그룹함수의 결과를 서브쿼리로 사용
@@ -165,42 +165,4 @@ FROM departments
 MINUS
 SELECT department_id
 FROM employees;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
